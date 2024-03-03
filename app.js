@@ -16,18 +16,16 @@ class Telephone {
     this.phoneNumbers.push(phoneNumber);
   }
   removePhoneNumber(phoneNumber) {
-    const index = this.phoneNumbers.indexOf(phoneNumber);
-    if (index !== -1) {
-      this.phoneNumbers.splice(index, 1);
+    const remove = this.phoneNumbers.indexOf(phoneNumber);
+    if (remove !== -1) {
+      this.phoneNumbers.splice(remove, 1);
     }
   }
   dialPhoneNumber(phoneNumber) {
-    if (this.phoneNumbers.includes(phoneNumber)) {
       this.notifyObservers(phoneNumber);
-    } else {
-      console.log("Phone number not found.");
+    
     }
-  }
+  
 }
 class Observer {
   notify(phoneNumber) {}
@@ -37,14 +35,17 @@ class PrintPhoneNumberObserver extends Observer {
     console.log(`Dialling ${phoneNumber}`);
   }
 }
-class CustomPrintObserver extends Observer {
+class customPrintObserver extends Observer {
   notify(phoneNumber) {
     console.log(`Now Dialling ${phoneNumber}`);
   }
-} // Example usage
+}
+ // Example usage
 const telephone = new Telephone();
-const observer1 = new PrintPhoneNumberObserver();
-const observer2 = new CustomPrintObserver();
+const observer1 = new 
+PrintPhoneNumberObserver();
+const observer2 = new 
+customPrintObserver();
 telephone.addObserver(observer1);
 telephone.addObserver(observer2);
 telephone.addPhoneNumber("2347023232");
